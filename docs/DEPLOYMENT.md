@@ -11,6 +11,12 @@
 - 部署方式：本机 Wrangler OAuth 手动发布；未创建 D1/R2、未更改套餐。
 - 自动化：GitHub Actions 仅检查与构建；未开启 Cloudflare Workers Builds 自动发布。
 
+### 线上验证
+
+已验证首页与菜品详情浏览、详情深链刷新，以及“我的”页面显示 Worker API 已连接。线上 `GET /api/health` 返回 200，未知 API 返回 404 / `NOT_FOUND`，`POST /api/reviews` 返回 403 / `WRITES_DISABLED`。
+
+首次 Linux CI 发现锁文件遗漏 `@emnapi/core` 和 `@emnapi/wasi-threads` 可选依赖，已在没有 node_modules 和旧锁文件的隔离目录重新生成完整 lockfile。运行结果以仓库 Actions 最新记录为准。测试站仍是只读预览，不包含真实认证与数据库。
+
 ## 认证与代码发布
 
 GitHub 使用官方 CLI 设备登录，Cloudflare 使用本机 Wrangler OAuth。凭据由相应工具保存在本机，不进入 Git，不要求在聊天中提供 Token。`.tools` 是开发环境临时工具目录，不提交。
