@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hfut-food-review",
+  "main": "server/index.ts",
+  "compatibility_date": "2026-10-23",
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api", "/api/*"],
+  },
+  "observability": { "enabled": true },
+}

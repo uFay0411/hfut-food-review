@@ -1,0 +1,3 @@
+# 第一阶段没有 Secret，无需创建 .dev.vars。
+# 下一阶段邮件密钥仅写入 .dev.vars（本地）或 wrangler secret put（云端）。
+# 严禁以 VITE_ 前缀暴露服务端密钥。
